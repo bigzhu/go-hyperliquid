@@ -152,14 +152,17 @@ type (
 	}
 
 	WsBasicOrder struct {
-		Coin      string  `json:"coin"`
-		Side      string  `json:"side"`
-		LimitPx   string  `json:"limitPx"`
-		Sz        string  `json:"sz"`
-		Oid       int64   `json:"oid"`
-		Timestamp int64   `json:"timestamp"`
-		OrigSz    string  `json:"origSz"`
-		Cloid     *string `json:"cloid"`
+		Coin             string  `json:"coin"`
+		Side             string  `json:"side"`
+		LimitPx          string  `json:"limitPx"`
+		Sz               string  `json:"sz"`
+		Oid              int64   `json:"oid"`
+		Timestamp        int64   `json:"timestamp"`
+		OrigSz           string  `json:"origSz"`
+		Cloid            *string `json:"cloid"`
+		TriggerPx        string  `json:"triggerPx"`
+		IsTrigger        bool    `json:"isTrigger"`
+		TriggerCondition string  `json:"triggerCondition"`
 	}
 
 	WsOrderFills struct {

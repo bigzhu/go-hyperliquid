@@ -701,6 +701,24 @@ func easyjson8df87204DecodeGithubComSoniricoGoHyperliquid5(in *jlexer.Lexer, out
 					*out.Cloid = string(in.String())
 				}
 			}
+		case "triggerPx":
+			if in.IsNull() {
+				in.Skip()
+			} else {
+				out.TriggerPx = string(in.String())
+			}
+		case "isTrigger":
+			if in.IsNull() {
+				in.Skip()
+			} else {
+				out.IsTrigger = bool(in.Bool())
+			}
+		case "triggerCondition":
+			if in.IsNull() {
+				in.Skip()
+			} else {
+				out.TriggerCondition = string(in.String())
+			}
 		default:
 			in.SkipRecursive()
 		}
@@ -758,6 +776,21 @@ func easyjson8df87204EncodeGithubComSoniricoGoHyperliquid5(out *jwriter.Writer, 
 		} else {
 			out.String(string(*in.Cloid))
 		}
+	}
+	{
+		const prefix string = ",\"triggerPx\":"
+		out.RawString(prefix)
+		out.String(string(in.TriggerPx))
+	}
+	{
+		const prefix string = ",\"isTrigger\":"
+		out.RawString(prefix)
+		out.Bool(bool(in.IsTrigger))
+	}
+	{
+		const prefix string = ",\"triggerCondition\":"
+		out.RawString(prefix)
+		out.String(string(in.TriggerCondition))
 	}
 	out.RawByte('}')
 }
