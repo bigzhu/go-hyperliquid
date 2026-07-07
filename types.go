@@ -247,8 +247,10 @@ type MarginSummary struct {
 
 type OpenOrder struct {
 	Coin      string  `json:"coin"`
+	Cloid     *string `json:"cloid,omitempty"`
 	LimitPx   float64 `json:"limitPx,string"`
 	Oid       int64   `json:"oid"`
+	OrigSz    float64 `json:"origSz,string"`
 	Side      string  `json:"side"`
 	Size      float64 `json:"sz,string"`
 	Timestamp int64   `json:"timestamp"`
@@ -428,11 +430,15 @@ type UserNonFundingLedgerUpdates struct {
 }
 
 type LedgerDelta struct {
-	Type        string `json:"type"`
-	USDC        string `json:"usdc"`
-	User        string `json:"user"`
-	Destination string `json:"destination"`
-	Fee         string `json:"fee"`
+	Type           string `json:"type"`
+	USDC           string `json:"usdc"`
+	User           string `json:"user"`
+	Destination    string `json:"destination"`
+	Fee            string `json:"fee"`
+	Token          string `json:"token"`
+	UsdcValue      string `json:"usdcValue"`
+	SourceDex      string `json:"sourceDex"`
+	DestinationDex string `json:"destinationDex"`
 }
 
 type UserFees struct {
@@ -578,11 +584,14 @@ type ScheduleCancelResponse struct {
 	Error  string `json:"error,omitempty"`
 }
 
-// ReserveRequestWeightResponse represents the response from reserve request weight action
+// ReserveResponseData represents the parsed success data from a reserve request weight action.
+type ReserveResponseData struct {
+	Type string `json:"type"`
+}
 type ReserveRequestWeightResponse struct {
-	Status   string `json:"status"`
-	Response string `json:"response,omitempty"` // Error message from API
-	Error    string `json:"error,omitempty"`    // Alternative error field
+	Status   string               `json:"status"`
+	Response *ReserveResponseData `json:"response,omitempty"`
+	Error    string               `json:"error,omitempty"`
 }
 
 type AgentApprovalResponse struct {
@@ -685,3 +694,13 @@ type PerpDeployAuctionStatus struct {
 	CurrentGas       string  `json:"currentGas"`
 	EndGas           *string `json:"endGas"`
 }
+
+// AccountHistory represents historical portfolio data for a specific time range
+type AccountHistory struct {
+	AccountValueHistory []MixedArray `json:"accountValueHistory"` // [timestamp, value]
+	PnlHistory          []MixedArray `json:"pnlHistory"`          // [timestamp, value]
+	Vlm                 string       `json:"vlm"`
+}
+
+// Portfolio represents a user's portfolio
+type Portfolio []MixedValue // [string, AccountHistory]

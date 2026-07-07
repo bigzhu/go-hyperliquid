@@ -186,10 +186,10 @@ Thanks to all the people who have contributed to this project! 🎉
                 </a>
             </td>
             <td align="center">
-                <a href="https://github.com/KILLY000">
-                    <img src="https://avatars.githubusercontent.com/u/138504730?v=4" width="100;" alt="KILLY000"/>
+                <a href="https://github.com/hail100">
+                    <img src="https://avatars.githubusercontent.com/u/7278395?v=4" width="100;" alt="hail100"/>
                     <br />
-                    <sub><b>Vernon Stokes</b></sub>
+                    <sub><b>hail100</b></sub>
                 </a>
             </td>
             <td align="center">
@@ -202,17 +202,17 @@ Thanks to all the people who have contributed to this project! 🎉
 		</tr>
 		<tr>
             <td align="center">
+                <a href="https://github.com/KILLY000">
+                    <img src="https://avatars.githubusercontent.com/u/138504730?v=4" width="100;" alt="KILLY000"/>
+                    <br />
+                    <sub><b>Vernon Stokes</b></sub>
+                </a>
+            </td>
+            <td align="center">
                 <a href="https://github.com/Debuggedd">
                     <img src="https://avatars.githubusercontent.com/u/16706921?v=4" width="100;" alt="Debuggedd"/>
                     <br />
                     <sub><b>Alex</b></sub>
-                </a>
-            </td>
-            <td align="center">
-                <a href="https://github.com/MarcSky">
-                    <img src="https://avatars.githubusercontent.com/u/4164003?v=4" width="100;" alt="MarcSky"/>
-                    <br />
-                    <sub><b>Levan</b></sub>
                 </a>
             </td>
             <td align="center">
@@ -223,24 +223,68 @@ Thanks to all the people who have contributed to this project! 🎉
                 </a>
             </td>
             <td align="center">
-                <a href="https://github.com/vyomshm">
-                    <img src="https://avatars.githubusercontent.com/u/20184946?v=4" width="100;" alt="vyomshm"/>
+                <a href="https://github.com/boyi">
+                    <img src="https://avatars.githubusercontent.com/u/1566932?v=4" width="100;" alt="boyi"/>
                     <br />
-                    <sub><b>Vyom</b></sub>
+                    <sub><b>boyi</b></sub>
                 </a>
             </td>
             <td align="center">
-                <a href="https://github.com/tpkeeper">
-                    <img src="https://avatars.githubusercontent.com/u/7260146?v=4" width="100;" alt="tpkeeper"/>
+                <a href="https://github.com/MarcSky">
+                    <img src="https://avatars.githubusercontent.com/u/4164003?v=4" width="100;" alt="MarcSky"/>
                     <br />
-                    <sub><b>tpkeeper</b></sub>
+                    <sub><b>Levan</b></sub>
                 </a>
             </td>
             <td align="center">
-                <a href="https://github.com/hail100">
-                    <img src="https://avatars.githubusercontent.com/u/7278395?v=4" width="100;" alt="hail100"/>
+                <a href="https://github.com/andrew-malikov">
+                    <img src="https://avatars.githubusercontent.com/u/35894527?v=4" width="100;" alt="andrew-malikov"/>
                     <br />
-                    <sub><b>hail100</b></sub>
+                    <sub><b>Andrew Malikov</b></sub>
+                </a>
+            </td>
+		</tr>
+		<tr>
+            <td align="center">
+                <a href="https://github.com/freeeverett">
+                    <img src="https://avatars.githubusercontent.com/u/54989739?v=4" width="100;" alt="freeeverett"/>
+                    <br />
+                    <sub><b>Everett</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/Saundr21">
+                    <img src="https://avatars.githubusercontent.com/u/144389161?v=4" width="100;" alt="Saundr21"/>
+                    <br />
+                    <sub><b>Saunder</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/07Vaishnavi-Singh">
+                    <img src="https://avatars.githubusercontent.com/u/100015197?v=4" width="100;" alt="07Vaishnavi-Singh"/>
+                    <br />
+                    <sub><b>Vaiz_07</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/aaltergot">
+                    <img src="https://avatars.githubusercontent.com/u/12907019?v=4" width="100;" alt="aaltergot"/>
+                    <br />
+                    <sub><b>Alexander Altergot</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/corverroos">
+                    <img src="https://avatars.githubusercontent.com/u/29249923?v=4" width="100;" alt="corverroos"/>
+                    <br />
+                    <sub><b>corver</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/daatsuka">
+                    <img src="https://avatars.githubusercontent.com/u/92530585?v=4" width="100;" alt="daatsuka"/>
+                    <br />
+                    <sub><b>daatsuka</b></sub>
                 </a>
             </td>
 		</tr>
@@ -253,38 +297,17 @@ Thanks to all the people who have contributed to this project! 🎉
                 </a>
             </td>
             <td align="center">
-                <a href="https://github.com/corverroos">
-                    <img src="https://avatars.githubusercontent.com/u/29249923?v=4" width="100;" alt="corverroos"/>
+                <a href="https://github.com/tpkeeper">
+                    <img src="https://avatars.githubusercontent.com/u/7260146?v=4" width="100;" alt="tpkeeper"/>
                     <br />
-                    <sub><b>corver</b></sub>
+                    <sub><b>tpkeeper</b></sub>
                 </a>
             </td>
             <td align="center">
-                <a href="https://github.com/aaltergot">
-                    <img src="https://avatars.githubusercontent.com/u/12907019?v=4" width="100;" alt="aaltergot"/>
+                <a href="https://github.com/vyomshm">
+                    <img src="https://avatars.githubusercontent.com/u/20184946?v=4" width="100;" alt="vyomshm"/>
                     <br />
-                    <sub><b>Alexander Altergot</b></sub>
-                </a>
-            </td>
-            <td align="center">
-                <a href="https://github.com/07Vaishnavi-Singh">
-                    <img src="https://avatars.githubusercontent.com/u/100015197?v=4" width="100;" alt="07Vaishnavi-Singh"/>
-                    <br />
-                    <sub><b>Vaiz_07</b></sub>
-                </a>
-            </td>
-            <td align="center">
-                <a href="https://github.com/freeeverett">
-                    <img src="https://avatars.githubusercontent.com/u/54989739?v=4" width="100;" alt="freeeverett"/>
-                    <br />
-                    <sub><b>Everett</b></sub>
-                </a>
-            </td>
-            <td align="center">
-                <a href="https://github.com/andrew-malikov">
-                    <img src="https://avatars.githubusercontent.com/u/35894527?v=4" width="100;" alt="andrew-malikov"/>
-                    <br />
-                    <sub><b>Andrew Malikov</b></sub>
+                    <sub><b>Vyom</b></sub>
                 </a>
             </td>
 		</tr>

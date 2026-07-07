@@ -104,11 +104,22 @@ func NewInfo(
 		}
 	}
 
+	// Build a lookup map from token Index value to SpotTokenInfo, because
+	// SpotAssetInfo.Tokens[0] holds a logical token Index, not the array position.
+	tokensByIndex := make(map[int]SpotTokenInfo, len(spotMeta.Tokens))
+	for _, t := range spotMeta.Tokens {
+		tokensByIndex[t.Index] = t
+	}
+
 	// Map spot assets starting at 10000
 	for _, spotInfo := range spotMeta.Universe {
 		asset := spotInfo.Index + spotAssetIndexOffset
 		info.coinToAsset[spotInfo.Name] = asset
-		info.assetToDecimal[asset] = spotMeta.Tokens[spotInfo.Tokens[0]].SzDecimals
+		if len(spotInfo.Tokens) > 0 {
+			if tokenInfo, ok := tokensByIndex[spotInfo.Tokens[0]]; ok {
+				info.assetToDecimal[asset] = tokenInfo.SzDecimals
+			}
+		}
 	}
 
 	return info
@@ -189,9 +200,20 @@ func parseMetaResponse(resp []byte) (*Meta, error) {
 		}
 	}
 
+	// Parse collateralToken (index into SpotMeta.Tokens for this dex's quote currency).
+	// Default perp dex uses 0 (USDC), builder dexes may use different tokens.
+	collateralToken := 0
+	if raw, ok := meta["collateralToken"]; ok {
+		var ct int
+		if err := json.Unmarshal(raw, &ct); err == nil {
+			collateralToken = ct
+		}
+	}
+
 	return &Meta{
-		Universe:     universe,
-		MarginTables: marginTablesResult,
+		Universe:        universe,
+		MarginTables:    marginTablesResult,
+		CollateralToken: collateralToken,
 	}, nil
 }
 
@@ -227,6 +249,39 @@ func (i *Info) SpotMeta(ctx context.Context) (*SpotMeta, error) {
 	}
 
 	return &spotMeta, nil
+}
+
+// allPerpMetas Retrieve all perpetuals metadata (universe and margin tables)
+func (i *Info) AllPerpMetas(ctx context.Context) ([]*Meta, error) {
+	payload := map[string]any{
+		"type": "allPerpMetas",
+	}
+
+	resp, err := i.client.post(ctx, "/info", payload)
+	if err != nil {
+		return nil, fmt.Errorf("failed to fetch meta: %w", err)
+	}
+
+	var result []any
+	if err := json.Unmarshal(resp, &result); err != nil {
+		return nil, fmt.Errorf("failed to unmarshal meta and asset contexts: %w", err)
+	}
+
+	allPerpMetas := make([]*Meta, len(result))
+	for i, meta := range result {
+		metaBytes, err := json.Marshal(meta)
+		if err != nil {
+			return nil, fmt.Errorf("failed to marshal meta: %w", err)
+		}
+
+		metaResult, err := parseMetaResponse(metaBytes)
+		if err != nil {
+			return nil, fmt.Errorf("failed to parse meta: %w", err)
+		}
+
+		allPerpMetas[i] = metaResult
+	}
+	return allPerpMetas, nil
 }
 
 func (i *Info) CoinToAsset(coin string) (int, bool) {
@@ -902,4 +957,55 @@ func (i *Info) PerpDeployAuctionStatus(ctx context.Context) (*PerpDeployAuctionS
 		return nil, fmt.Errorf("failed to unmarshal perp deploy auction status: %w", err)
 	}
 	return &result, nil
+}
+
+// portfolio returns the user's portfolio
+func (i *Info) Portfolio(ctx context.Context, user string) ([]Portfolio, error) {
+	resp, err := i.client.post(ctx, "/info", map[string]any{
+		"type": "portfolio",
+		"user": user,
+	})
+	if err != nil {
+		return nil, fmt.Errorf("failed to fetch portfolio: %w", err)
+	}
+
+	var result []Portfolio
+	if err := json.Unmarshal(resp, &result); err != nil {
+		return nil, fmt.Errorf("failed to unmarshal portfolio: %w", err)
+	}
+	return result, nil
+}
+
+// QueryUserAbstractionState returns the user's abstraction state
+func (i *Info) QueryUserAbstractionState(ctx context.Context, user string) (string, error) {
+	resp, err := i.client.post(ctx, "/info", map[string]any{
+		"type": "userAbstraction",
+		"user": user,
+	})
+	if err != nil {
+		return "", fmt.Errorf("failed to fetch state: %w", err)
+	}
+
+	var state string
+	if err := json.Unmarshal(resp, &state); err != nil {
+		return "", fmt.Errorf("failed to unmarshal state: %w", err)
+	}
+	return state, nil
+}
+
+// QueryUserDexAbstractionState returns the user's dex abstraction state
+func (i *Info) QueryUserDexAbstractionState(ctx context.Context, user string) (string, error) {
+	resp, err := i.client.post(ctx, "/info", map[string]any{
+		"type": "userDexAbstraction",
+		"user": user,
+	})
+	if err != nil {
+		return "", fmt.Errorf("failed to fetch state: %w", err)
+	}
+
+	var state string
+	if err := json.Unmarshal(resp, &state); err != nil {
+		return "", fmt.Errorf("failed to unmarshal state: %w", err)
+	}
+	return state, nil
 }
